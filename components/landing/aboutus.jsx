@@ -6,7 +6,7 @@ import { Link } from 'lucide-react'
 import Image from 'next/image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
- 
+
 const AboutUs = () => {
     useEffect(() => {
         AOS.init({
@@ -14,45 +14,43 @@ const AboutUs = () => {
             once: false,
         });
     }, []);
- 
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 my-10 px-5 md:px-29">
-            <div className='py-10' data-aos="fade-right">
-                <Image src="/images/laptop.png" alt='mobile-app' width={720} height={750} className='m-auto' />
-            </div>
-            <div className="text-start py-1 lg:py-7 lg:px-5 lg:mr-32" data-aos="fade-up"
-                >
-                <div className='my-4'>
-                    <SectionHeading title={'About Our Oraganaigation'} subtitle={'Work with a Dedicated'} />
-                </div>
-                <h1 className="mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl lg:text-6xl">
-                    Financial Advisory Company
-                </h1>
-                <p className="mb-8 text-lg font-normal text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry iss standard dummy text ever since the 1500s, when an unknown printer took a galley
+        <div className="my-10 px-5 md:px-20">
+            <div className="text-center py-1 lg:py-7 lg:px-5" data-aos="fade-up">
+                {/* Title Section */}
+                <h1 className="text-3xl  font-bold mb-5 inline-block text-[#422c0a]">What We Offer</h1>
+                {/* Line Under the Title */}
+                <div className="h-1 w-[200px] bg-gray-900 mx-auto mb-10 rounded"></div>
+                <p className="mb-8 text-lg font-normal text-gray-600">We provide financing solutions tailored for individuals and businesses who are underserved by traditional banks.
                 </p>
                 <div>
                     <div className="flex">
                         <div>
                             <Image src="/images/tick.png" alt='mobile-app' width={25} height={20} className='m-auto mr-3' />
                         </div>
-                        <p className='mb-2 text-md font-normal text-gray-600'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className='mb-2 text-md font-normal text-gray-600'>Our key offering is Loan Against Property, enabling clients to unlock the value of their property and secure funding for business & personal needs.</p>
+                    </div>
+                    <div className="flex text-start">
+                        <div>
+                            <Image src="/images/tick.png" alt='mobile-app' width={25} height={20} className='m-auto mr-4' />
+                        </div>
+                        <p className='mb-2 text-md font-normal text-gray-600'>
+                            This financing option supports MSMEs by meeting their working capital requirements and fueling business growth. Our unique approach includes accepting income based on assessment years, which sets us apart.
+                        </p>
                     </div>
                     <div className="flex">
                         <div>
                             <Image src="/images/tick.png" alt='mobile-app' width={25} height={20} className='m-auto mr-3' />
                         </div>
-                        <p className='mb-2 text-md font-normal text-gray-600'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                    <div className="flex">
-                        <div>
-                            <Image src="/images/tick.png" alt='mobile-app' width={25} height={20} className='m-auto mr-3' />
-                        </div>
-                        <p className='mb-2 text-md font-normal text-gray-600'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className='mb-2 text-md font-normal text-gray-600'>
+                            Additionally, we offer loans for salaried individuals, providing a secured and accessible path to achieving their financial goals.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
- 
+
 export default AboutUs

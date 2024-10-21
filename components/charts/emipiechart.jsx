@@ -22,11 +22,11 @@ export const description = "A pie chart with a legend"
 const chartConfig = {
     principal: {
         label: "Principal Amount",
-        color: "hsl(var(--chart-2))",
+        color: "#af874c",
     },
     intrest: {
         label: "Intrest Amount",
-        color: "hsl(var(--chart-1))",
+        color: "#9fc9c4",
     },
 }
 
@@ -44,7 +44,7 @@ export function EmipieChart({ piedata, title, customLabels }) {
             <CardContent className="flex-1 pb-0">
                 <ChartContainer
                     config={chartConfig}
-                   className="mx-auto max-h-[400px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
+                   className="mx-auto max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
                 >
                     <PieChart>
                         <ChartTooltip

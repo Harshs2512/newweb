@@ -2,6 +2,8 @@ import { seoData } from "@/config/seo";
 import { getUrl } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css"
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -75,12 +77,16 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale}>
       <body className={fontSans.variable}>
         <div className="bg-white font-sans">
-          {children}
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
         </div>
       </body>
     </html>

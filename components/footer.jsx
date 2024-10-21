@@ -4,6 +4,7 @@ import React from 'react'
 import { TwitterLogoIcon, Facebook } from "@radix-ui/react-icons";
 import { AiFillFacebook } from "react-icons/ai";
 import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa6";
+import { footerData } from "@/data/footer";
 
 const Footer = () => {
     return (
@@ -13,69 +14,38 @@ const Footer = () => {
             </footer>
             <footer className="bg-no-repeat bg-cover bg-[url('/images/site-footer-shape.png')] bg-stone-950 bg-blend-overlay">
                 <div className="mx-auto w-full max-w-screen-xl">
-                    <div className="grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
-                        <div>
+                    <div className="grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-5">
+                        <div className="col-span-2">
                             <h2 className="mb-2 text-md font-semibold text-white uppercase">Company</h2>
-                            <p className="mb-6 text-sm text-gray-500 border-gray-500 border-b py-4">Lorem ipsum dolor sit amet, consect etur adi pisicing elit sed do eiusmod.</p>
+                            <p className="mb-6 text-sm text-gray-500 border-gray-500 border-b py-4">{footerData.company.description}</p>
                             <div className="text-gray-500 font-medium">
                                 <div className="mb-4 flex items-center">
                                     <IoCall className="text-white" />
-                                    <Link href="tel:+919331023407" className="hover:underline ml-3">+91 9331023407, +91 7666573269</Link>
+                                    <Link href="tel:+919331023407" className="hover:underline ml-3">{footerData.company.mobile}</Link>
                                 </div>
                                 <div className="mb-4 flex items-center">
                                     <IoMail className="text-white" />
-                                    <Link href="mailto:support@esdeefinmart.com" className="hover:underline ml-3">support@esdeefinmart.com</Link>
+                                    <Link href="mailto:support@esdeefinmart.com" className="hover:underline ml-3">{footerData.company.email}</Link>
                                     {/* <Link href="mailto:esdeefinmart@gmail.com" className="hover:underline ml-3">esdeefinmart@gmail.com</Link> */}
                                 </div>
                                 <div className="mb-4 flex items-center">
-                                    <IoLocationSharp className="text-white" />
-                                    <Link href="#" className="hover:underline ml-3">7A, Bentick Street, 2nd Floor, Kolkata - 700001</Link>
+                                    <IoLocationSharp className="text-white text-2xl" />
+                                    <Link href="#" className="hover:text-white ease-in-out duration-75 ml-2">{footerData.company.address}</Link>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <h2 className="mb-6 text-md font-semibold text-white uppercase">Quick Links</h2>
-                            <ul className="text-gray-500 font-medium">
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">About</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Services</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Tools</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Blog</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Contact</Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 className="mb-6 text-md font-semibold text-white uppercase">Service</h2>
-                            <ul className="text-gray-500 font-medium">
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Mutual Fund</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Financial Planning</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Tax Planning</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Retirement Planning</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Insurance</Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link href="#" className="hover:underline">FD & Bonds</Link>
-                                </li>
-                            </ul>
-                        </div>
+                        {footerData.sublinks.map((main, index) => (
+                            <div key={index}>
+                                <h2 className="mb-6 text-md font-semibold text-white uppercase">{main.maintitle}</h2>
+                                <ul className="text-gray-500 font-medium">
+                                    {main.sublinks.map((sub, index) => (
+                                        <li className="mb-4" key={index}>
+                                            <Link href={sub.link} className="hover:text-white">{sub.title}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                         <div>
                             <h2 className="mb-6 text-md font-semibold text-white uppercase">Follow Us</h2>
                             <div className="flex gap-x-5">

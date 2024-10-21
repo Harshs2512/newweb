@@ -25,11 +25,11 @@ export const description = "A stacked bar chart with a legend";
 const chartConfig = {
     investedAmount: {
         label: "investedAmount",
-        color: "hsl(var(--chart-1))",
+        color: "#9fc9c4",
     },
     growth: {
         label: "growth",
-        color: "hsl(var(--chart-2))",
+        color: "#af874c",
     },
 };
 
@@ -55,7 +55,7 @@ export function CalculatorReturnChart({ data }) {
                             axisLine={false}
                             tickFormatter={(value) => value}
                         />
-                         <YAxis />
+                        <YAxis />
                         <ChartTooltip content={<ChartTooltipContent hideLabel />} />
                         <ChartLegend content={<ChartLegendContent />} />
                         <Bar

@@ -31,7 +31,6 @@ const chartConfig = {
 }
 
 export function SippieChart({ piedata, title, customLabels }) {
-    
     const chartData = [
         { browser: "invested", visitors: piedata?.totalInvestment, fill: "var(--color-invested)" },
         { browser: "return", visitors: piedata?.futureValue, fill: "var(--color-return)" },

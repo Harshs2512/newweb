@@ -34,10 +34,14 @@ export function CarouselSpacing() {
         return { __html: item }
     }
     return (
-        <section className="lg:px-40 md:px-20 px-6">
-            <div className='my-4'>
-                <SectionHeading title={'About Our Oraganaigation'} subtitle={'Work with a Dedicated'} />
+        <section className="lg:px-40 md:px-20 px-6 my-20">
+            <div className="text-center">
+                {/* Title Section */}
+                <h1 className="text-3xl font-bold mb-5 inline-block text-[#422c0a]">Testimonials</h1>
+                {/* Line Under the Title */}
+                <div className="h-1 w-[200px] bg-gray-900 mx-auto mb-10 rounded"></div>
             </div>
+            <h1 className="text-md mb-5 inline-block text-gray-600">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</h1>
             <Carousel className="max-w-6xl mx-auto">
                 <CarouselContent className="-ml-1">
                     {testimonials?.map((item, index) => (

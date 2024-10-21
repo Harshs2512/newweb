@@ -1,8 +1,8 @@
-"use client";
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 
-const Tickers = () => {
+const Carousel = () => {
     const [data, setData] = useState([]);
 
     const fetchData = async () => {
@@ -20,25 +20,62 @@ const Tickers = () => {
         fetchData();
         const interval = setInterval(() => {
             fetchData();
-        }, 30000);
+        }, 30000); // Refresh data every 30 seconds
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className='p-10'>
-            <div className='grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-5'>
+        <div className="relative overflow-hidden container mx-auto">
+            <div className="flex animate-scroll">
                 {data.map((item, index) => (
-                    <div key={index} className='px-3 py-3 bg-white border border-gray-200 rounded shadow'>
-                        <h1 className='font-bold text-gray-800 text-sm mb-2'>{item?.indexName}</h1>
-                        <div className='flex gap-2'>
-                            <h1 className='font-semibold text-gray-700 text-sm'>{item?.figure}</h1>
-                            <h1 className='font-medium text-red-700 text-sm'>{item?.diff_amount} ({item?.percentage})</h1>
-                        </div>
+                    <div
+                        key={index}
+                        className="px-4 py-2 flex items-center gap-2 bg-black border-r border-white min-w-[200px]"
+                    >
+                        <h1 className="font-bold text-white text-sm">{item?.indexName}</h1>
+                        <h1 className="font-semibold text-white text-sm">{item?.figure}</h1>
+                        <h1
+                            className={`font-medium text-sm flex items-center ${
+                                item?.diff_amount > 0 ? 'text-green-500' : 'text-red-500'
+                            }`}
+                        >
+                            {item?.diff_amount > 0 ? <FiArrowUp /> : <FiArrowDown />}
+                            {item?.diff_amount} ({item?.percentage})
+                        </h1>
+                    </div>
+                ))}
+                {/* Duplicate items for infinite scroll effect */}
+                {data.map((item, index) => (
+                    <div
+                        key={`duplicate-${index}`}
+                        className="px-4 py-2 flex items-center gap-2 bg-black border-r border-white min-w-[200px]"
+                    >
+                        <h1 className="font-bold text-white text-sm">{item?.indexName}</h1>
+                        <h1 className="font-semibold text-white text-sm">{item?.figure}</h1>
+                        <h1
+                            className={`font-medium text-sm flex items-center ${
+                                item?.diff_amount > 0 ? 'text-green-500' : 'text-red-500'
+                            }`}
+                        >
+                            {item?.diff_amount > 0 ? <FiArrowUp /> : <FiArrowDown />}
+                            {item?.diff_amount} ({item?.percentage})
+                        </h1>
                     </div>
                 ))}
             </div>
+
+            <style jsx>{`
+                @keyframes scroll {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-${200 * data.length}px); }
+                }
+
+                .animate-scroll {
+                    animation: scroll 40s linear infinite;
+                }
+            `}</style>
         </div>
     );
 };
 
-export default Tickers;
+export default Carousel;
