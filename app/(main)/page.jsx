@@ -24,7 +24,7 @@ export default function Page({ children }) {
             <main>
                 <h1>{t('title')}</h1>
                 <Suspense fallback={<Skeleton />}>
-                    <Homepage />
+                    {/* <Homepage /> */}
                 </Suspense>
                 <Suspense fallback={<Skeleton />}>
                     <Tickers />
